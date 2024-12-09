@@ -138,7 +138,7 @@ class SequenceModel():
         self.seed = seed
         self.train_stop_loss_thred = train_stop_loss_thred
         self.use_amp = use_amp
-        self.scaler = torch.cuda.amp.GradScaler(enabled=use_amp)
+        self.scaler = torch.amp.GradScaler(enabled=use_amp)
 
         if self.seed is not None:
             np.random.seed(self.seed)
