@@ -46,7 +46,7 @@ ricir = []
 
 # Training
 ######################################################################################
-'''for seed in [0, 1, 2, 3, 4]:
+for seed in [0, 1, 2, 3, 4]:
     model = MASTERModel(
         d_feat = d_feat, d_model = d_model, t_nhead = t_nhead, s_nhead = s_nhead, T_dropout_rate=dropout, S_dropout_rate=dropout,
         beta=beta, gate_input_end_index=gate_input_end_index, gate_input_start_index=gate_input_start_index,
@@ -71,7 +71,7 @@ ricir = []
     ic.append(metrics['IC'])
     icir.append(metrics['ICIR'])
     ric.append(metrics['RIC'])
-    ricir.append(metrics['RICIR'])'''
+    ricir.append(metrics['RICIR'])
 ######################################################################################
 
 # Load and Test
