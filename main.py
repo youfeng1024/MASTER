@@ -77,7 +77,7 @@ ricir = []
 # Load and Test
 ######################################################################################
 for seed in [0]:
-    param_path = f'model\{universe}_{prefix}_{seed}.pkl'
+    param_path = f'model/{universe}_{prefix}_{seed}.pkl'
 
     print(f'Model Loaded from {param_path}')
     model = MASTERModel(
