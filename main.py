@@ -11,7 +11,7 @@ train_data_dir = f'data'
 with open(f'{train_data_dir}/{prefix}/{universe}_dl_train.pkl', 'rb') as f:
     dl_train = pickle.load(f)
 
-predict_data_dir = f'data\opensource'
+predict_data_dir = f'data/opensource'
 with open(f'{predict_data_dir}/{universe}_dl_valid.pkl', 'rb') as f:
     dl_valid = pickle.load(f)
 with open(f'{predict_data_dir}/{universe}_dl_test.pkl', 'rb') as f:
