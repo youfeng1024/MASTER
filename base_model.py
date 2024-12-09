@@ -328,10 +328,11 @@ class SequenceModel():
             - 预测过程中会自动忽略标签中的NaN值
             - zscore标准化不会影响基于排名的评估指标的结果
         """
-        if self.fitted<0:
-            raise ValueError("model is not fitted yet!")
-        else:
-            print('Epoch:', self.fitted)
+        if self.fitted != 'Previously trained.':
+            if self.fitted < 0:
+                raise ValueError("model is not fitted yet!")
+            else:
+                print('Epoch:', self.fitted)
 
         test_loader = self._init_data_loader(dl_test, shuffle=False, drop_last=False)
 
