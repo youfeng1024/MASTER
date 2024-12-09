@@ -100,7 +100,7 @@ class DailyBatchSamplerRandom(Sampler):
         self.data_source = data_source
         self.shuffle = shuffle
         # 计算每天的样本数量
-        self.daily_count = pd.Series(index=self.data_source.get_index()).groupby("datetime").size().values
+        self.daily_count = pd.Series(index=self.data_source.get_index(), dtype='float64').groupby("datetime").size().values
         # 计算每天数据的起始索引位置,将累计和数组向右移动一位,第一个位置填0
         self.daily_index = np.roll(np.cumsum(self.daily_count), 1)
         self.daily_index[0] = 0
