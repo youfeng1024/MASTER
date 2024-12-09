@@ -205,7 +205,7 @@ class MASTER(nn.Module):
 class MASTERModel(SequenceModel):
     def __init__(
             self, d_feat, d_model, t_nhead, s_nhead, gate_input_start_index, gate_input_end_index,
-            T_dropout_rate, S_dropout_rate, beta, **kwargs,
+            T_dropout_rate, S_dropout_rate, beta, **kwargs
     ):
         super(MASTERModel, self).__init__(**kwargs)
         self.d_model = d_model
