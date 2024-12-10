@@ -67,7 +67,8 @@ while True:
         print(output.strip())
 
 # 读取错误输出（如果有）
-stderr_output = process.stderr.read()
+if process.stderr != None:
+    stderr_output = process.stderr.read()
 if stderr_output:
     print("Error Output:\n", stderr_output)
 
