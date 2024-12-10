@@ -64,7 +64,7 @@ process.wait()
 print('*')
 # 设置你的环境名称和脚本路径
 env_name = "qlib"
-script_path = os.path.join(".", "MASTER", "main.py")
+script_path = "main.py"
 
 # 运行脚本
 run_script_in_conda_env(env_name, script_path)
