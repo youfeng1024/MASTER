@@ -4,12 +4,44 @@ import shutil
 
 import subprocess
 
+def run_script_in_conda_env(env_name, script_path):
+    # 构建激活 conda 环境和运行脚本的命令
+    command = f"conda run -n {env_name} python {script_path}"
+    
+    # 打开一个文件用于写入输出
+    with open('output.log', 'w') as log_file:
+        # 使用 subprocess.Popen 来启动进程
+        process = subprocess.Popen(
+            command, 
+            shell=True,
+            stdout=subprocess.PIPE, 
+            stderr=subprocess.PIPE, 
+            text=True
+        )
+
+        # 从进程中逐行读取输出
+        for line in process.stdout:
+            print(line, end='')  # 打印到终端
+            log_file.write(line)  # 写入到文件
+
+        # 等待进程结束并获取返回码
+        return_code = process.wait()
+
+        # 如果需要，也可以处理标准错误
+        stderr_output = process.stderr.read()
+        if stderr_output:
+            print("Standard Error:", stderr_output)
+            log_file.write(stderr_output)
+
+    print(f"Process finished with return code: {return_code}")
+
+
 # 创建命令序列
 commands = """
-
-
-
-python -h
+git clone https://github.com/youfeng1024/MASTER.git
+cd MASTER
+wget -O opensource.zip -c https://dlink.host/1drv/aHR0cHM6Ly8xZHJ2Lm1zL3UvYy8wMWI3Nzg3OWYwZDUxNzZlL0VWRzhFQWZfNVpoRnZmclZjT3ZWSUxJQlZhbmR0VjNJelJseTdobWhPckxTQUE_ZT0yVFNlZmI.zip 
+unzip -n opensource.zip -d data/
 """
 
 # 启动一个 Bash 会话
@@ -41,6 +73,14 @@ if stderr_output:
 
 # 确保进程结束
 process.wait()
+
+# 设置你的环境名称和脚本路径
+env_name = "qlib"
+script_path = os.path.join(".", "MASTER", "main.py")
+
+# 运行脚本
+run_script_in_conda_env(env_name, script_path)
+
 
 c2net_context = prepare()
 output_path = c2net_context.output_path
