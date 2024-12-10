@@ -69,8 +69,8 @@ while True:
 # 读取错误输出（如果有）
 if process.stderr != None:
     stderr_output = process.stderr.read()
-if stderr_output:
-    print("Error Output:\n", stderr_output)
+    if stderr_output:
+        print("Error Output:\n", stderr_output)
 
 # 确保进程结束
 process.wait()
