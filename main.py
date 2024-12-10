@@ -37,7 +37,7 @@ if universe == 'csi300':
 elif universe == 'csi800':
     beta = 2
 
-seed_num = 3
+seed_num = 2
 n_epoch = 40
 lr = 1e-5
 GPU = 0
