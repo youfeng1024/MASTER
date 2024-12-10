@@ -4,22 +4,6 @@ import shutil
 
 import subprocess
 
-def run_script_in_conda_env(env_name, script_path):
-    # 构建激活 conda 环境和运行脚本的命令
-    command = f"cd MASTER && conda run -n {env_name} python {script_path} >> output.log"
-    
-    process = subprocess.Popen(
-        command, 
-        shell=True,
-        text=True
-    )
-
-    # 等待进程结束并获取返回码
-    return_code = process.wait()
-
-    print(f"Process finished with return code: {return_code}")
-
-
 # 创建命令序列
 commands = """
 git clone https://github.com/youfeng1024/MASTER.git
@@ -59,14 +43,6 @@ if process.stderr != None:
 
 # 确保进程结束
 process.wait()
-print('*')
-# # 设置你的环境名称和脚本路径
-# env_name = "qlib"
-# script_path = "main.py"
-
-# # 运行脚本
-# run_script_in_conda_env(env_name, script_path)
-
 
 c2net_context = prepare()
 output_path = c2net_context.output_path
