@@ -26,6 +26,7 @@ git clone https://github.com/youfeng1024/MASTER.git
 cd MASTER
 wget -O opensource.zip -c https://dlink.host/1drv/aHR0cHM6Ly8xZHJ2Lm1zL3UvYy8wMWI3Nzg3OWYwZDUxNzZlL0VWRzhFQWZfNVpoRnZmclZjT3ZWSUxJQlZhbmR0VjNJelJseTdobWhPckxTQUE_ZT0yVFNlZmI.zip 
 unzip -n opensource.zip -d data/
+python main.py
 """
 
 # 启动一个 Bash 会话
@@ -59,12 +60,12 @@ if process.stderr != None:
 # 确保进程结束
 process.wait()
 print('*')
-# 设置你的环境名称和脚本路径
-env_name = "qlib"
-script_path = "main.py"
+# # 设置你的环境名称和脚本路径
+# env_name = "qlib"
+# script_path = "main.py"
 
-# 运行脚本
-run_script_in_conda_env(env_name, script_path)
+# # 运行脚本
+# run_script_in_conda_env(env_name, script_path)
 
 
 c2net_context = prepare()
