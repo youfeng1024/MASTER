@@ -6,7 +6,7 @@ import subprocess
 
 def run_script_in_conda_env(env_name, script_path):
     # 构建激活 conda 环境和运行脚本的命令
-    command = f"conda run -n {env_name} python {script_path}"
+    command = f"cd MASTER && conda run -n {env_name} python {script_path}"
     
     # 打开一个文件用于写入输出
     with open('output.log', 'w') as log_file:
