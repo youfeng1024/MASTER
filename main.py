@@ -4,8 +4,8 @@ import numpy as np
 import time
 import torch
 
-print(torch.version)
-print(torch.cuda.is_available())
+print(torch.__version__)
+print("gpu avaliable? " + str(torch.cuda.is_available()))
 
 # Please install qlib first before load the data.
 
@@ -40,7 +40,7 @@ elif universe == 'csi800':
 n_epoch = 1
 lr = 1e-5
 GPU = 0
-use_amp = False
+use_amp = True
 train_stop_loss_thred = 0.95
 
 
