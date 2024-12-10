@@ -2,22 +2,37 @@ from c2net.context import prepare, upload_output
 import os
 import shutil
 
-import os
+import subprocess
 
-# Clone the repository
-os.system("git clone https://github.com/youfeng1024/MASTER.git")
+# 创建命令序列
+commands = """
+git clone https://github.com/youfeng1024/MASTER.git
+cd MASTER
+curl -u youfeng1024@gmail.com:ycziyobue6ir3l2e -O https://app.koofr.net/dav/OneDrive/dataset/opensource.zip
+unzip opensource.zip -d data/opensource/
+python main.py | tee output.txt
+"""
 
-# Change working directory to the cloned repository
-os.chdir("MASTER")
+# 启动一个 Bash 会话
+process = subprocess.Popen(
+    ["bash", "--init-file", "~/.bashrc"],
+    stdin=subprocess.PIPE,
+    stdout=subprocess.PIPE,
+    stderr=subprocess.STDOUT,
+    text=True,
+    bufsize=1  # 行缓冲
+)
 
-# Download the dataset
-os.system("curl -u youfeng1024@gmail.com:ycziyobue6ir3l2e -O https://app.koofr.net/dav/OneDrive/dataset/opensource.zip")
+# 向 Bash 会话写入命令并关闭输入流
+process.stdin.write(commands)
+process.stdin.close()
 
-# Unzip the dataset
-os.system("unzip opensource.zip -d data/opensource/")
+# 实时读取输出并打印到控制台
+for line in process.stdout:
+    print(line, end="")  # 实时输出到控制台
 
-# Run the main script and save output
-os.system("python main.py | tee output.txt")
+# 等待进程结束
+process.wait()
 
 c2net_context = prepare()
 output_path = c2net_context.output_path

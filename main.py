@@ -2,6 +2,10 @@ from master import MASTERModel
 import pickle
 import numpy as np
 import time
+import torch
+
+print(torch.version)
+print(torch.cuda.is_available())
 
 # Please install qlib first before load the data.
 
