@@ -6,10 +6,9 @@ import subprocess
 
 # 创建命令序列
 commands = """
-git clone https://github.com/youfeng1024/MASTER.git
+
 cd MASTER
-wget -O opensource.zip -c https://dlink.host/1drv/aHR0cHM6Ly8xZHJ2Lm1zL3UvYy8wMWI3Nzg3OWYwZDUxNzZlL0VWRzhFQWZfNVpoRnZmclZjT3ZWSUxJQlZhbmR0VjNJelJseTdobWhPckxTQUE_ZT0yVFNlZmI.zip > /dev/null 2>&1
-unzip -n opensource.zip -d data/
+
 python main.py | tee output.log
 """
 
