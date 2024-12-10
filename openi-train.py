@@ -7,7 +7,7 @@ import subprocess
 # 创建命令序列
 commands = """
 
-cd MASTER
+
 
 python main.py | tee output.log
 """
