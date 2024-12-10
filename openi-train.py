@@ -14,24 +14,11 @@ def run_script_in_conda_env(env_name, script_path):
         process = subprocess.Popen(
             command, 
             shell=True,
-            stdout=subprocess.PIPE, 
-            stderr=subprocess.PIPE, 
             text=True
         )
 
-        # 从进程中逐行读取输出
-        for line in process.stdout:
-            print(line, end='')  # 打印到终端
-            log_file.write(line)  # 写入到文件
-
         # 等待进程结束并获取返回码
         return_code = process.wait()
-
-        # 如果需要，也可以处理标准错误
-        stderr_output = process.stderr.read()
-        if stderr_output:
-            print("Standard Error:", stderr_output)
-            log_file.write(stderr_output)
 
     print(f"Process finished with return code: {return_code}")
 
