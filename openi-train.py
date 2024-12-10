@@ -9,12 +9,17 @@ commands = """
 
 
 
-python -v
+python -h
 """
 
 # 启动一个 Bash 会话
 process = subprocess.Popen(
-    ["bash", "--init-file", "~/.bashrc"]
+    ["bash", "--init-file", "~/.bashrc"],
+    stdin=subprocess.PIPE,
+    stdout=subprocess.PIPE,
+    stderr=subprocess.STDOUT,
+    bufsize=1,  # 行缓冲
+    universal_newlines=True  # 使用文本模式
 )
 
 # 向 Bash 会话写入命令并关闭输入流
