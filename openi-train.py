@@ -74,7 +74,7 @@ if process.stderr != None:
 
 # 确保进程结束
 process.wait()
-
+print('*')
 # 设置你的环境名称和脚本路径
 env_name = "qlib"
 script_path = os.path.join(".", "MASTER", "main.py")
