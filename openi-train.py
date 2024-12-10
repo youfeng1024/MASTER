@@ -6,19 +6,16 @@ import subprocess
 
 def run_script_in_conda_env(env_name, script_path):
     # 构建激活 conda 环境和运行脚本的命令
-    command = f"cd MASTER && conda run -n {env_name} python {script_path}"
+    command = f"cd MASTER && conda run -n {env_name} python {script_path} >> output.log"
     
-    # 打开一个文件用于写入输出
-    with open('output.log', 'w') as log_file:
-        # 使用 subprocess.Popen 来启动进程
-        process = subprocess.Popen(
-            command, 
-            shell=True,
-            text=True
-        )
+    process = subprocess.Popen(
+        command, 
+        shell=True,
+        text=True
+    )
 
-        # 等待进程结束并获取返回码
-        return_code = process.wait()
+    # 等待进程结束并获取返回码
+    return_code = process.wait()
 
     print(f"Process finished with return code: {return_code}")
 
