@@ -26,18 +26,18 @@ process = subprocess.Popen(
 process.stdin.write(commands)
 process.stdin.close()
 
-# 实时读取输出
-while True:
-    output = process.stdout.readline()
-    if output == '' and process.poll() is not None:
-        break
-    if output:
-        print(output.strip())
+# # 实时读取输出
+# while True:
+#     output = process.stdout.readline()
+#     if output == '' and process.poll() is not None:
+#         break
+#     if output:
+#         print(output.strip())
 
-# 读取错误输出（如果有）
-stderr_output = process.stderr.read()
-if stderr_output:
-    print("Error Output:\n", stderr_output)
+# # 读取错误输出（如果有）
+# stderr_output = process.stderr.read()
+# if stderr_output:
+#     print("Error Output:\n", stderr_output)
 
 # 确保进程结束
 process.wait()
